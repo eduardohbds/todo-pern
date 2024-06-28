@@ -13,5 +13,7 @@
         console.log("Server is running in port 1300");
     });   
    ```
-5. 
+5. To run use `node index.js`
+6. But everytime you make a change you have to run this command, to make the things easy we going to use `nodemon`
+7. 
 
