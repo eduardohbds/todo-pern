@@ -7,9 +7,9 @@ import ListTodo from './component/ListTodo';
 function App() {
   return (
     <div className="App">
+      <InputTodo/>
       <EditTodo/>
       <ListTodo/>
-      <InputTodo/>
     </div>
   );
 }
