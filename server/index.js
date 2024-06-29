@@ -21,8 +21,30 @@ app.post("/todos",async (req,res) =>
         console.error(error.message);
         res.status(500).send("Server Error");
     }
-}
-)
+});
+
+app.get("/todos", async (req,res) =>
+{
+    try {
+        const allTodos = await pool.query("SELECT * FROM todo");
+        res.json(allTodos.rows);
+    } catch (error) {
+        console.error(error.message);
+    }
+});
+
+app.get("/todos/:id", async (req,res) =>
+    {
+        try {
+            const {id} = req.params;
+            const allTodos = await pool.query("SELECT * FROM todo WHERE todo_id = $1",
+                [id]
+            );
+            res.json(allTodos.rows[0]);
+        } catch (error) {
+            console.error(error.message);
+        }
+});
 
 app.listen(1300, ()=> {
     console.log("Server is running in port 1300");
