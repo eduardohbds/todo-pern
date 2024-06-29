@@ -8,7 +8,7 @@ const ListTodo = () => {
 
     const deleteTodo = async (id) => {
         try {
-            const response = await axios.delete("http://localhost:1300/todos/${id}")
+            const response = await axios.delete(`http://localhost:1300/todos/${id}`)
             setTodos(todos.filter((todo) => { return todo.todo_id !== id }))
         } catch (error) {
             console.error(error.message);
@@ -32,7 +32,7 @@ const ListTodo = () => {
 
     return (
         <div>
-            <TableTodo todos={todos} setTodos={setTodos} deleteTodo={deleteTodo}/>
+            {todos ? <TableTodo todos={todos} setTodos={setTodos} deleteTodo={deleteTodo}/>:<></>}
         </div>
     )
 }
