@@ -15,7 +15,6 @@ app.post("/todos",async (req,res) =>
             query("INSERT INTO todo (description) VALUES($1) RETURNING *",
                 [description]
             );
-
         res.json(newTodo);
     } catch (error) {
         console.error(error.message);
@@ -50,6 +49,8 @@ app.put("/todos/:id",async (req,res) => {
     try {
         const {id} = req.params;
         const {description} = req.body;
+        console.log("id" + id);
+        console.log("description" + description);
         const updateTodo = await pool.query("UPDATE todo SET description = $1 WHERE todo_id = $2",
             [description,id]
         );
@@ -62,6 +63,7 @@ app.put("/todos/:id",async (req,res) => {
 app.delete("/todos/:id",async (req,res) => {
     try {
         const {id} = req.params;
+        console.log(id);
         const deleteTodo = await pool.query("DELETE FROM todo WHERE todo_id = $1",
             [id]
         );
