@@ -12,7 +12,8 @@ const InputTodo = () => {
     const [description, setDescription] = useState("");
     const OnSubmitForm = async () => { 
         try {
-            const response = await axios.post('http://localhost:5000/todos',{description});
+            const response = await axios.post('http://localhost:1300/todos',{description});
+            setDescription("")
             console.log(response.data);
         } catch (error) {
             console.error(error.message);
