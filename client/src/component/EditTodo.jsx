@@ -2,18 +2,20 @@ import React,{useState} from 'react'
 import axios from "axios";
 
 const EditTodo = ({todo}) => {
-  const [description, setDescription] = useState(todo.description);
+  const [description, setDescription] = useState(todo ? todo.description : "");
+
   const updateDescription = async () => { 
     try {
       const body = {description};
-      const response = await axios.put("http://localhost:1300/todos/${id}",{ description: body })
+      const response = await axios.put(
+        `http://localhost:1300/todos/${todo.id}`,{ description: body })
     } catch (error) {
       console.error(error.message);
     }
   }
   return (
     <div>
-
+      
     </div>
   )
 }
