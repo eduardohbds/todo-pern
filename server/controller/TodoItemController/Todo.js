@@ -1,4 +1,4 @@
-import pool from "../../db";
+const pool = require("../../db");
 
 class Todo{
     createTodo = async(res,req) => {
@@ -27,6 +27,7 @@ class Todo{
         try {
             const {id} = req.params
             const response = await pool.query("SELECT * FROM todo WHERE id = $1",[id])
+            res.status(200).json(response.rows[0]);
         } catch (error) {
             console.error(error);
         }
@@ -56,4 +57,4 @@ class Todo{
     }
 }
 
-export default Todo;
+module.exports = Todo;
